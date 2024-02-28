@@ -1,0 +1,38 @@
+nav{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #111926;
+    color: #ffff;
+}
+
+nav .navDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+nav > .navDiv > img{
+    cursor: pointer;
+}
+
+nav > .navDiv > h3{
+    cursor: pointer;
+}
+
+nav .navlist{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 50px;
+    cursor: pointer;
+}
+
+nav li{
+    list-style: none;
+}
