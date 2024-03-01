@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
 
         <div>
-         <Button/>
+         <Button name = "Get started"/>
         </div>
       </nav>
     </>
