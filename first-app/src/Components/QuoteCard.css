@@ -1,0 +1,22 @@
+.QuoteCard {
+  background-color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+  gap: 20px;
+  padding: 30px;
+  color: #ffffff;
+  width: 90%;
+  border-radius: 10px;
+}
+.QuotePera{
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.QuoteOther{
+    color: #9CA3AF;
+    font-size: 1.2rem;
+}
+
