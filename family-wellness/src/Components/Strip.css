@@ -1,0 +1,46 @@
+.striper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 20rem;
+  width: 100%;
+  background-color: #991f48;
+  color: #fff;
+  gap: 20px;
+}
+
+.striper h2 {
+  font-size: 2.5rem;
+  font-weight: lighter;
+}
+
+.striper p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.striper .btnWrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.striper .btnWrapper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: auto;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: #fff;
+  background: none;
+  border: solid 2px;
+  transition: 0.5s;
+}
+
+.striper .btnWrapper button:hover {
+  background-color: #fff;
+  color: #991f48;
+}

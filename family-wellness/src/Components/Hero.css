@@ -1,0 +1,18 @@
+.hero-card {
+  margin-top: 25px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  /* border: solid 1px orange; */
+  height: 25rem;
+  width: 100%;
+  background-color: #f1f0ee;
+}
+
+.hero-card .imageWrapper {
+  height: 90%;
+  width: 75%;
+  background-image: url(./Assets/imageProxy.webp);
+  background-position: center;
+  background-size: cover;
+}

@@ -3,7 +3,11 @@ import "./Hero.css";
 function Hero(){
     return(
         <>
-        <h1>Hero</h1>
+       <div className = "hero-card">
+        <div className = "imageWrapper">
+            
+        </div>
+       </div>
         </>
     )
 }
