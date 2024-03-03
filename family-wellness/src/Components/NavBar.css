@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  .nav {
+    height: 40px;
+    width: 100%;
+    background-color: #a4a09c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  .nav .active {
+    background-color: #991f48;
+
+   
+  }
+  
+  .nav :hover{
+    background-color: #c64c75;
+  }
+  

@@ -1,0 +1,18 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  justify-content: space-around;
+  height: 75px;
+  padding: 50px 0 50px 0;
+}
+
+.heading h1 {
+  font-weight: 300;
+  color: #991f48;
+}
+
+.heading p {
+  font-size: 0.8rem;
+}
