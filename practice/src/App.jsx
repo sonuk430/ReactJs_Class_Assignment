@@ -1,9 +1,11 @@
 import "./App.css";
+import BgChanger from "./Component/BgChanger";
 import Counter from "./Component/Counter";
 function App() {
   return (
     <>
-     <Counter/>
+      <Counter />
+      <BgChanger />
     </>
   );
 }
