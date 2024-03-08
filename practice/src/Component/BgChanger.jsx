@@ -5,6 +5,7 @@ function BgChanger() {
 
   return (
     <>
+      <h2>BG Changer</h2>
       <div
         style={{
           width: "200px",
