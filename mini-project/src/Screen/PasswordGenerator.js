@@ -92,8 +92,6 @@ function PasswordGenerator() {
             </p>
             <input
               type="number"
-              //   min={8}
-              //   max={100}
               value={length}
               onChange={(e) => {
                 setLength(e.target.value);
