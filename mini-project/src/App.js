@@ -1,12 +1,9 @@
-import Card from "./component/Card";
-import NavBar from "./component/NavBar";
-
+import PasswordGenerator from "./Screen/PasswordGenerator"
 function App() {
   return (
-   <>
-   <NavBar/>
-   <Card/>
-   </>
+    <>
+      <PasswordGenerator/>
+    </>
   );
 }
 
