@@ -1,38 +1,85 @@
 import { useState } from "react";
 // import "./TodoApp.css";
 
-function TodoApp() {
-  const [subject, setSubject] = useState("");
-  const [hours, setHours] = useState("");
-  const [subHours, setSubHours] = useState([]);
+const list = [
+  {
+    id: 1,
+    subject: "HTML",
+    rating: 9,
+  },
+  {
+    id: 2,
+    subject: "CSS",
+    rating: 7,
+  },
+];
 
-  const hamdelSubject = (event) => {
-    setSubject(event.target.value);
-  };
-  const hamdelhours = (event) => {
-    setHours(event.target.value);
-  };
+export default function TodoApp() {
+  const [todo,setTodo] = useState([]);
 
-  const handelAdd = () => {
-   const add = [...subHours];
-   console.log(add);
-    
+  setTodo(...todo,...list)
 
-  };
+  console.log(todo);
+
+  return (
+    <>
+      <UserTaskEnter />
+      <UserTskRender  />
+    </>
+  );
+}
+
+function UserTaskEnter() {
+  const [userSubject, setUserSubject] = useState("");
+  const [userSubRating, setUserSubRating] = useState();
+
+  function handleUserSubjects(event) {
+    setUserSubject(event.target.value);
+  }
+
+  function handleUserSubRating(event) {
+    setUserSubRating(event.target.value);
+  }
+
+
+  function handleTaskAdd(){
+    const userData = {
+      userSubject,
+      userSubRating
+    }
+
+    console.log(userData);
+  }
 
   return (
     <>
       <div>
-        <h1>Geekster Education Planner</h1>
-        <div>
-          <input value={subject} type="text" onChange={hamdelSubject} />
-          <input value={hours} type="number" onChange={hamdelhours} />
-          <button onClick={handelAdd}>Add</button>
-        </div>
-        <ul></ul>
+        <input type="text" value={userSubject} onChange={handleUserSubjects} />
+        <input
+          type="number"
+          value={userSubRating}
+          onChange={handleUserSubRating}
+        />
+        <button onClick={handleTaskAdd}>Add Task</button>
       </div>
     </>
   );
 }
 
-export default TodoApp;
+function UserTskRender() {
+  return (
+    <>
+      <div>
+        <ul>
+          {list.map((el, index) => {
+            return (
+              <li key={el.id}>
+                {el.subject} {el.rating} <span>❌</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
+  );
+}
