@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* height: 100vh; */
+    width: 100vw;
+    background-color: #414141;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.containner{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    height: auto;
+    width: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 0.5rem;
+    background-color: rgb(31, 39, 39);
+   
+}
+.containner h3{
+    color: #fff;
+    padding-bottom: 0px;
+    margin-bottom: 20px;
+    border-bottom: solid 2px orangered;
+}
+
+.containner form{
+    display: flex;
+    gap: 10px;
+}
+
+.containner form button{
+    width: 100px;
+    border: none;
+    transition: 0.7s;
+}
+
+.containner form button:hover{
+    width: 75px;
+    border: solid 1px;
+}
+
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 1.2px orangered;
+    padding-bottom: 5px;
+}
+
+.list div{
+    display: flex;
+    gap: 10px;
+}
+
+.list div button{
+    width: 2rem;
+    font-size: 1.1rem;
+    transition: 0.8s;
+    border: none;
+}
+
+
+.list div button:hover{
+    background-color: rgb(13, 15, 15);
+    color: #fff;
+}
+
+input{
+    height: 30px;
+    font-size: 1.1rem;
+}
+
+.list li{
+   
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    font-size: 1.2rem;
+
+}
+
