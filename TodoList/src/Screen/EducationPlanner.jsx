@@ -1,14 +1,15 @@
+import { v4 as generatedUnitId } from 'uuid';
 import "./EducationPlanner.css"
 import { useState } from "react"
 
 export const EducationPlanner = () => {
 
-    const [todo,setTodo] = useState([]);
+    const [todo, setTodo] = useState([]);
 
     //  geting data from Form component(chid to parent throgth the lifting)
 
-    function userInputData(data){
-        setTodo([...todo,data])
+    function userInputData(data) {
+        setTodo([...todo, data])
         // console.log(todo);
     }
 
@@ -17,7 +18,7 @@ export const EducationPlanner = () => {
             <div className="containner">
                 <h3>Education Planner</h3>
                 <Form userInputData={userInputData} />
-                <List todo = {todo}/>
+                <List todo={todo} setTodo={setTodo} />
             </div>
         </>
     )
@@ -26,33 +27,41 @@ export const EducationPlanner = () => {
 
 //  form Component
 
-export const Form = ({userInputData}) => {
-    const [inputSubject,setInputSubject] = useState("");
-    const [inputHours,setInputHours] = useState(1);
+export const Form = ({ userInputData }) => {
 
-    function handleSubmit(e){
+    const [inputSubject, setInputSubject] = useState("");
+
+    const [inputHours, setInputHours] = useState(1);
+
+    function handleSubmit(e) {
+
         e.preventDefault()
         // console.log("submited");
 
-        if(inputSubject === ""){
+        if (inputSubject === "") {
             alert("Please Enter Your Subject")
         }
+        else {
 
-        const userData = {
-            inputSubject,
-            inputHours
+
+
+            const userData = {
+                inputSubject,
+                inputHours,
+                id: generatedUnitId()
+            }
+            userInputData(userData)
+
+            setInputSubject("")
+            setInputHours(1)
         }
-        userInputData(userData)
-
-        setInputSubject("")
-        setInputHours(1)
     }
-    
-    function handleInputSubject(e){
+
+    function handleInputSubject(e) {
         setInputSubject(e.target.value)
     }
 
-    function handleInputHours(e){
+    function handleInputHours(e) {
         setInputHours(e.target.value)
     }
 
@@ -74,41 +83,54 @@ export const Form = ({userInputData}) => {
 
 //  List Component
 
-export const List = ({todo}) => {
-
-    // const [count,setCount] = useState()
+export const List = ({ todo, setTodo }) => {
 
 
-    // count = todo[0].inputHours;
+    //  increase 
 
-    function increment(){
-        // setCount(count+1)
-        // console.log(count);
-        console.log("increment");
-        let count = parseInt(todo[0].inputHours);
-        count + 1;
-        console.log(count);
+    function increase(idx) {
+        let countVal = [...todo];
+        countVal[idx].inputHours = parseInt(countVal[idx].inputHours) + 1;
+        setTodo(countVal)
     }
 
-    function decrement(){
-        console.log("decrement");
+    // deacrease
+
+    function deacrease(idx) {
+        let countVal = [...todo];
+        if (countVal[idx].inputHours !== 1) {
+
+            countVal[idx].inputHours = parseInt(countVal[idx].inputHours) - 1;
+        }
+        setTodo(countVal)
     }
+
+    // deleteList
+    function deleteList(id) {
+        let fillterData = todo.filter((todo) => (
+            todo.id !== id),
+        )
+        setTodo(fillterData)
+    }
+
 
     return (
         <>
             {
-                todo.map((el,index)=>(
-                    <div className="list">
-                    <li key={index}>
-                    <samp>{el.inputSubject}</samp>
-                    <span> {el.inputHours}</span>
-                    </li>
+                todo.map((el, idx) => (
 
-                   <div>
-                   <button onClick={increment} >+</button>
-                    <button onClick={decrement}>-</button>
-                    <button>❌</button>
-                   </div>
+                    <div className="list" key={el.id}>
+                        <li >
+                            <samp>{el.inputSubject}</samp>
+                            <span> {el.inputHours}</span>
+                        </li>
+
+                        <div>
+                            <button onClick={() => increase(idx)}>+</button>
+
+                            <button onClick={() => deacrease(idx)}>-</button>
+                            <button onClick={() => deleteList(el.id)}>❌</button>
+                        </div>
                     </div>
                 ))
             }

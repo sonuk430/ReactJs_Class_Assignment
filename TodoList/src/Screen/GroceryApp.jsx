@@ -1,41 +1,66 @@
 import { useState } from "react"
-import { GroceryList } from "../Components/GroceryList";
 
 export const GroceryApp = () => {
-  const [groceryItem,setGroceryItem] = useState("");
+  return (
+    <div className="containner">
+      <h3>Grocery Bud</h3>
+      <Form />
 
-  const [groceryItemList,setGroceryItemList] = useState([]);
+    </div>
+  )
+}
 
-  function handleGroceryItem(e){
-    setGroceryItem(e.target.value)
+
+//  form component
+
+function Form() {
+  const [todo, setTodo] = useState([]);
+
+  const [grocery, setGrocery] = useState("")
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  function handleInput(e) {
+    setGrocery(() => e.target.value)
   }
 
-  function handleAddItem(){
-   setGroceryItemList([...groceryItemList,groceryItem])
-
-   console.log(groceryItemList);
+  function handleAddItem() {
+    setTodo([...todo, { grocery, isChecked }])
+    // console.log(todo);
   }
-
-  
 
   return (
-   <>
-   <div>
-    <h2>Grocery Bud</h2>
-    <input type="text"  value={groceryItem} onChange={handleGroceryItem}/>
-    <button onClick={handleAddItem}>Add</button>
-   </div>
-
-    <GroceryList groceryItemList={groceryItemList}/>
-
-   
-   </>
+    <>
+      <input type="text" value={grocery} onChange={handleInput} />
+      <button onClick={handleAddItem}>Add Item</button>
+      <List todo={todo} />
+    </>
   )
 }
 
 
 
+//  list componet
 
 
 
+function List({ todo }) {
+  console.log(todo);
 
+  function handleChecked(){
+    !todo.isChecked
+  }
+
+  return (
+    <>
+      {
+        todo.map((el, index) => (
+          <ul key={index}>
+            <li >{el.grocery}</li>
+            <input type="checkbox" value={el.isChecked} onChange={handleChecked} />
+          </ul>
+        ))
+      }
+    </>
+  )
+}
