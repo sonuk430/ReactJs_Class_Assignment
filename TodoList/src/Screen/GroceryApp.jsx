@@ -18,14 +18,14 @@ function Form() {
 
   const [grocery, setGrocery] = useState("")
 
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
 
   function handleInput(e) {
     setGrocery(() => e.target.value)
   }
 
   function handleAddItem() {
-    setTodo([...todo, { grocery, isChecked }])
+    setTodo([...todo, { grocery, isChecked: false }])
     // console.log(todo);
   }
 
@@ -33,7 +33,7 @@ function Form() {
     <>
       <input type="text" value={grocery} onChange={handleInput} />
       <button onClick={handleAddItem}>Add Item</button>
-      <List todo={todo} />
+      <List todo={todo} setTodo={setTodo} />
     </>
   )
 }
@@ -44,11 +44,16 @@ function Form() {
 
 
 
-function List({ todo }) {
-  console.log(todo);
+function List({ todo, setTodo }) {
+  // console.log(todo);
 
-  function handleChecked(){
-    !todo.isChecked
+  function handleChecked(index) {
+    console.log(index);
+    if (todo[index].isChecked === false) {
+      todo[index].isChecked !== false;
+    }
+    console.log(todo[index].isChecked);
+
   }
 
   return (
@@ -57,7 +62,7 @@ function List({ todo }) {
         todo.map((el, index) => (
           <ul key={index}>
             <li >{el.grocery}</li>
-            <input type="checkbox" value={el.isChecked} onChange={handleChecked} />
+            <input type="checkbox" value={el.isChecked} onChange={() => handleChecked(index)} />
           </ul>
         ))
       }

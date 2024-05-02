@@ -6,9 +6,9 @@ function App() {
 
   return (
     <>
-    <EducationPlanner/>
+      <EducationPlanner />
       {/* <GroceryApp/> */}
-     
+
     </>
   )
 }
