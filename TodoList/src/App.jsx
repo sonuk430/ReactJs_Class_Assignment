@@ -1,13 +1,13 @@
 
-import { EducationPlanner } from './Screen/EducationPlanner'
+// import { EducationPlanner } from './Screen/EducationPlanner'
 import { GroceryApp } from './Screen/GroceryApp'
 
 function App() {
 
   return (
     <>
-      <EducationPlanner />
-      {/* <GroceryApp/> */}
+      {/* <EducationPlanner /> */}
+      <GroceryApp />
 
     </>
   )
