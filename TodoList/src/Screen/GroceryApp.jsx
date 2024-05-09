@@ -54,7 +54,7 @@ export const GroceryApp = () => {
 
   return (
     <div className="containner">
-      <h3>Grocery Bud</h3>
+      <h3 className="heading">Grocery Bud</h3>
       <Form todo={todo} setTodo={setTodo} handleTodoSubmit={handleTodoSubmit} />
 
       <List allTodo={allTodo} handleDeleted={handleDeleted} handleCheckTodo={handleCheckTodo} />
@@ -72,8 +72,8 @@ function Form({ todo, setTodo, handleTodoSubmit }) {
   return (
     <>
       <form action="submited" onSubmit={handleTodoSubmit}>
-        <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
-        <button >Add Item</button>
+        <input type="text" placeholder="Write Grocery Name" value={todo} onChange={(e) => setTodo(e.target.value)} />
+        <button className="btn">Add Item</button>
       </form>
     </>
   )
@@ -90,18 +90,18 @@ function List({ allTodo, handleDeleted, handleCheckTodo }) {
 
 
   return (
-    <div>
+    <div className="container">
       {
         allTodo.map((element) => (
-          <div key={element.id}>
+          <div className="taskContainer" key={element.id}>
             <input type="checkbox" onChange={() => handleCheckTodo(element.id)} />
 
             <p style={{ textDecoration: element.isChecked ? "line-through" : "" }}>{element.todo}</p>
 
 
-            <button>Edit</button>
+            <button className="btn">Edit</button>
 
-            <button onClick={() => handleDeleted(element.id)}>Delete</button>
+            <button className="btn" onClick={() => handleDeleted(element.id)}>Delete</button>
           </div>
         ))
       }
