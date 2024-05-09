@@ -16,9 +16,7 @@ export const GroceryApp = () => {
 
     if (todo.trim() === "") {
       // alert("he")
-      toast.error("Please insert grocery item", {
-        position: "top-center",
-      });
+      alert("Add Items")
     }
     else {
 
