@@ -1,14 +1,17 @@
 
 // import { EducationPlanner } from './Screen/EducationPlanner'
-import { GroceryApp } from './Screen/GroceryApp'
+// import { EcomStore } from './Screen/EcomStore'
+// import { GroceryApp } from './Screen/GroceryApp'
+import { ProgressBar } from './Screen/ProgressBar'
 
 function App() {
 
   return (
     <>
       {/* <EducationPlanner /> */}
-      <GroceryApp />
-
+      {/* <GroceryApp /> */}
+      <ProgressBar />
+     
     </>
   )
 }
