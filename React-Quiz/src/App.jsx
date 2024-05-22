@@ -1,4 +1,4 @@
-import { act, useEffect, useReducer } from "react"
+import { Children, act, useEffect, useReducer } from "react"
 import Main from "./Components/Main"
 
 import Header from "./Header"
@@ -9,7 +9,12 @@ import { Question } from "./Components/Question";
 
 import { NextButton } from "./Components/NextButton";
 import { Progress } from "./Components/Progress";
+import { FinishScreen } from "./Components/FinishScreen";
+import { Timer } from "./Components/Timer";
+import { Footer } from "./Components/Footer";
 
+
+const SECS_PER_QUESTION = 30;
 
 const initialState = {
   questions: [],
@@ -18,6 +23,8 @@ const initialState = {
   index: 0,
   answer: null,
   points: 0,
+  highscore: 0,
+  secoundRemaining: null,
 };
 
 function reducer(state, action) {
@@ -39,6 +46,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
+        secoundRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -53,6 +61,22 @@ function reducer(state, action) {
       return {
         ...state, index: state.index + 1, answer: null
       }
+    case 'finish':
+      return {
+        ...state, status: "finished",
+        highscore:
+          state.points > state.highscore ? state.points : state.highscore
+      };
+
+    case 'restart': return {
+      ...initialState, questions: state.questions, status: 'ready'
+    }
+
+    case 'tick':
+      return {
+        ...state, secoundRemaining: state.secoundRemaining - 1,
+        status: state.secoundRemaining === 0 ? "finished" : state.status
+      }
 
     default:
       throw new Error("Action unKnow");
@@ -60,7 +84,7 @@ function reducer(state, action) {
 }
 
 export default function App() {
-  const [{ questions, status, index, answer, points }, dispatch] = useReducer(reducer, initialState);
+  const [{ questions, status, index, answer, points, highscore, secoundRemaining }, dispatch] = useReducer(reducer, initialState);
 
 
   const numQuestions = questions.length;
@@ -98,10 +122,20 @@ export default function App() {
 
               <Question question={questions[index]} dispatch={dispatch} answer={answer} />
 
-              <NextButton dispatch={dispatch} answer={answer} />
+              <Footer>
+
+                <Timer dispatch={dispatch} secoundRemaining={secoundRemaining} />
+
+                <NextButton dispatch={dispatch} answer={answer} index={index} numQuestions={numQuestions} />
+
+              </Footer>
             </>
           )
 
+        }
+
+        {
+          status === 'finished' && <FinishScreen points={points} maxPossiblePoints={maxPossiblePoints} highscore={highscore} dispatch={dispatch} />
         }
       </Main>
     </div>
